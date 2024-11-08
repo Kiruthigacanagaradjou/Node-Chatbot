@@ -1,0 +1,783 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "a,do,how,i,laptop,request,servic": {
+            "intent": "laptopServiceRelated.how do I request a laptop service?",
+            "domain": "default"
+          },
+          "do,i,if,is,laptop,my,not,should,what,work": {
+            "intent": "laptopServiceRelated.what should I do if my laptop is not working?",
+            "domain": "default"
+          },
+          "contact,for,i,laptop,repair,should,who": {
+            "intent": "laptopServiceRelated.who should I contact for laptop repairs?",
+            "domain": "default"
+          },
+          "laptop,repair": {
+            "intent": "laptopServiceRelated.laptop repair",
+            "domain": "default"
+          },
+          "a,meet,schedul": {
+            "intent": "meetingRelated.schedule a meeting",
+            "domain": "default"
+          },
+          "a,book,meet": {
+            "intent": "meetingRelated.book a meeting",
+            "domain": "default"
+          },
+          "a,do,how,i,meet,schedul": {
+            "intent": "meetingRelated.how do I schedule a meeting?",
+            "domain": "default"
+          },
+          "a,i,meet,need,set,to,up": {
+            "intent": "meetingRelated.I need to set up a meeting",
+            "domain": "default"
+          },
+          "meet,schedul": {
+            "intent": "meetingRelated.meeting schedule",
+            "domain": "default"
+          },
+          "arrang,meet": {
+            "intent": "meetingRelated.meeting arrangement",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "laptopServiceRelated.how do I request a laptop service?": "default",
+          "laptopServiceRelated.what should I do if my laptop is not working?": "default",
+          "laptopServiceRelated.who should I contact for laptop repairs?": "default",
+          "laptopServiceRelated.laptop repair": "default",
+          "meetingRelated.schedule a meeting": "default",
+          "meetingRelated.book a meeting": "default",
+          "meetingRelated.how do I schedule a meeting?": "default",
+          "meetingRelated.I need to set up a meeting": "default",
+          "meetingRelated.meeting schedule": "default",
+          "meetingRelated.meeting arrangement": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "how do I request a laptop service?",
+            "intent": "laptopServiceRelated.how do I request a laptop service?"
+          },
+          {
+            "domain": "default",
+            "utterance": "what should I do if my laptop is not working?",
+            "intent": "laptopServiceRelated.what should I do if my laptop is not working?"
+          },
+          {
+            "domain": "default",
+            "utterance": "who should I contact for laptop repairs?",
+            "intent": "laptopServiceRelated.who should I contact for laptop repairs?"
+          },
+          {
+            "domain": "default",
+            "utterance": "laptop repair",
+            "intent": "laptopServiceRelated.laptop repair"
+          },
+          {
+            "domain": "default",
+            "utterance": "schedule a meeting",
+            "intent": "meetingRelated.schedule a meeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "book a meeting",
+            "intent": "meetingRelated.book a meeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "how do I schedule a meeting?",
+            "intent": "meetingRelated.how do I schedule a meeting?"
+          },
+          {
+            "domain": "default",
+            "utterance": "I need to set up a meeting",
+            "intent": "meetingRelated.I need to set up a meeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "meeting schedule",
+            "intent": "meetingRelated.meeting schedule"
+          },
+          {
+            "domain": "default",
+            "utterance": "meeting arrangement",
+            "intent": "meetingRelated.meeting arrangement"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "how": 1,
+              "do": 1,
+              "i": 1,
+              "request": 1,
+              "a": 1,
+              "laptop": 1,
+              "servic": 1,
+              "what": 1,
+              "should": 1,
+              "if": 1,
+              "my": 1,
+              "is": 1,
+              "not": 1,
+              "work": 1,
+              "who": 1,
+              "contact": 1,
+              "for": 1,
+              "repair": 1,
+              "schedul": 1,
+              "meet": 1,
+              "book": 1,
+              "need": 1,
+              "to": 1,
+              "set": 1,
+              "up": 1,
+              "arrang": 1
+            },
+            "intents": {
+              "laptopServiceRelated.how do I request a laptop service?": 1,
+              "laptopServiceRelated.what should I do if my laptop is not working?": 1,
+              "laptopServiceRelated.who should I contact for laptop repairs?": 1,
+              "laptopServiceRelated.laptop repair": 1,
+              "meetingRelated.schedule a meeting": 1,
+              "meetingRelated.book a meeting": 1,
+              "meetingRelated.how do I schedule a meeting?": 1,
+              "meetingRelated.I need to set up a meeting": 1,
+              "meetingRelated.meeting schedule": 1,
+              "meetingRelated.meeting arrangement": 1
+            },
+            "intentFeatures": {
+              "laptopServiceRelated.how do I request a laptop service?": {
+                "how": 1,
+                "do": 1,
+                "i": 1,
+                "request": 1,
+                "a": 1,
+                "laptop": 1,
+                "servic": 1
+              },
+              "laptopServiceRelated.what should I do if my laptop is not working?": {
+                "what": 1,
+                "should": 1,
+                "i": 1,
+                "do": 1,
+                "if": 1,
+                "my": 1,
+                "laptop": 1,
+                "is": 1,
+                "not": 1,
+                "work": 1
+              },
+              "laptopServiceRelated.who should I contact for laptop repairs?": {
+                "who": 1,
+                "should": 1,
+                "i": 1,
+                "contact": 1,
+                "for": 1,
+                "laptop": 1,
+                "repair": 1
+              },
+              "laptopServiceRelated.laptop repair": {
+                "laptop": 1,
+                "repair": 1
+              },
+              "meetingRelated.schedule a meeting": {
+                "schedul": 1,
+                "a": 1,
+                "meet": 1
+              },
+              "meetingRelated.book a meeting": {
+                "book": 1,
+                "a": 1,
+                "meet": 1
+              },
+              "meetingRelated.how do I schedule a meeting?": {
+                "how": 1,
+                "do": 1,
+                "i": 1,
+                "schedul": 1,
+                "a": 1,
+                "meet": 1
+              },
+              "meetingRelated.I need to set up a meeting": {
+                "i": 1,
+                "need": 1,
+                "to": 1,
+                "set": 1,
+                "up": 1,
+                "a": 1,
+                "meet": 1
+              },
+              "meetingRelated.meeting schedule": {
+                "meet": 1,
+                "schedul": 1
+              },
+              "meetingRelated.meeting arrangement": {
+                "meet": 1,
+                "arrang": 1
+              }
+            },
+            "featuresToIntent": {
+              "how": [
+                "laptopServiceRelated.how do I request a laptop service?",
+                "meetingRelated.how do I schedule a meeting?"
+              ],
+              "do": [
+                "laptopServiceRelated.how do I request a laptop service?",
+                "laptopServiceRelated.what should I do if my laptop is not working?",
+                "meetingRelated.how do I schedule a meeting?"
+              ],
+              "i": [
+                "laptopServiceRelated.how do I request a laptop service?",
+                "laptopServiceRelated.what should I do if my laptop is not working?",
+                "laptopServiceRelated.who should I contact for laptop repairs?",
+                "meetingRelated.how do I schedule a meeting?",
+                "meetingRelated.I need to set up a meeting"
+              ],
+              "request": [
+                "laptopServiceRelated.how do I request a laptop service?"
+              ],
+              "a": [
+                "laptopServiceRelated.how do I request a laptop service?",
+                "meetingRelated.schedule a meeting",
+                "meetingRelated.book a meeting",
+                "meetingRelated.how do I schedule a meeting?",
+                "meetingRelated.I need to set up a meeting"
+              ],
+              "laptop": [
+                "laptopServiceRelated.how do I request a laptop service?",
+                "laptopServiceRelated.what should I do if my laptop is not working?",
+                "laptopServiceRelated.who should I contact for laptop repairs?",
+                "laptopServiceRelated.laptop repair"
+              ],
+              "servic": [
+                "laptopServiceRelated.how do I request a laptop service?"
+              ],
+              "what": [
+                "laptopServiceRelated.what should I do if my laptop is not working?"
+              ],
+              "should": [
+                "laptopServiceRelated.what should I do if my laptop is not working?",
+                "laptopServiceRelated.who should I contact for laptop repairs?"
+              ],
+              "if": [
+                "laptopServiceRelated.what should I do if my laptop is not working?"
+              ],
+              "my": [
+                "laptopServiceRelated.what should I do if my laptop is not working?"
+              ],
+              "is": [
+                "laptopServiceRelated.what should I do if my laptop is not working?"
+              ],
+              "not": [
+                "laptopServiceRelated.what should I do if my laptop is not working?"
+              ],
+              "work": [
+                "laptopServiceRelated.what should I do if my laptop is not working?"
+              ],
+              "who": [
+                "laptopServiceRelated.who should I contact for laptop repairs?"
+              ],
+              "contact": [
+                "laptopServiceRelated.who should I contact for laptop repairs?"
+              ],
+              "for": [
+                "laptopServiceRelated.who should I contact for laptop repairs?"
+              ],
+              "repair": [
+                "laptopServiceRelated.who should I contact for laptop repairs?",
+                "laptopServiceRelated.laptop repair"
+              ],
+              "schedul": [
+                "meetingRelated.schedule a meeting",
+                "meetingRelated.how do I schedule a meeting?",
+                "meetingRelated.meeting schedule"
+              ],
+              "meet": [
+                "meetingRelated.schedule a meeting",
+                "meetingRelated.book a meeting",
+                "meetingRelated.how do I schedule a meeting?",
+                "meetingRelated.I need to set up a meeting",
+                "meetingRelated.meeting schedule",
+                "meetingRelated.meeting arrangement"
+              ],
+              "book": [
+                "meetingRelated.book a meeting"
+              ],
+              "need": [
+                "meetingRelated.I need to set up a meeting"
+              ],
+              "to": [
+                "meetingRelated.I need to set up a meeting"
+              ],
+              "set": [
+                "meetingRelated.I need to set up a meeting"
+              ],
+              "up": [
+                "meetingRelated.I need to set up a meeting"
+              ],
+              "arrang": [
+                "meetingRelated.meeting arrangement"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "how",
+                "do",
+                "i",
+                "request",
+                "a",
+                "laptop",
+                "servic",
+                "what",
+                "should",
+                "if",
+                "my",
+                "is",
+                "not",
+                "work",
+                "who",
+                "contact",
+                "for",
+                "repair",
+                "schedul",
+                "meet",
+                "book",
+                "need",
+                "to",
+                "set",
+                "up",
+                "arrang"
+              ],
+              "intents": [
+                "laptopServiceRelated.how do I request a laptop service?",
+                "laptopServiceRelated.what should I do if my laptop is not working?",
+                "laptopServiceRelated.who should I contact for laptop repairs?",
+                "laptopServiceRelated.laptop repair",
+                "meetingRelated.schedule a meeting",
+                "meetingRelated.book a meeting",
+                "meetingRelated.how do I schedule a meeting?",
+                "meetingRelated.I need to set up a meeting",
+                "meetingRelated.meeting schedule",
+                "meetingRelated.meeting arrangement"
+              ],
+              "perceptrons": [
+                [
+                  1.8451043367385864,
+                  1.2483463287353516,
+                  0.6685051321983337,
+                  3.8732831478118896,
+                  1.3216102123260498,
+                  1.8209452629089355,
+                  3.8732831478118896,
+                  -0.5096284747123718,
+                  -0.9429402947425842,
+                  -0.5096284747123718,
+                  -0.5096284747123718,
+                  -0.5096284747123718,
+                  -0.5096284747123718,
+                  -0.5096284747123718,
+                  -0.33631807565689087,
+                  -0.33631807565689087,
+                  -0.33631807565689087,
+                  -1.4555805921554565,
+                  -2.16652774810791,
+                  -2.551673173904419,
+                  -0.15120261907577515,
+                  -0.15825805068016052,
+                  -0.15825805068016052,
+                  -0.15825805068016052,
+                  -0.15825805068016052,
+                  0,
+                  -0.36536429147311805
+                ],
+                [
+                  -0.7594186067581177,
+                  1.0677695274353027,
+                  0.28040754795074463,
+                  -0.44559523463249207,
+                  -0.9156484603881836,
+                  0.44700920581817627,
+                  -0.44559523463249207,
+                  1.8855403661727905,
+                  1.1844099760055542,
+                  1.8855403661727905,
+                  1.8855403661727905,
+                  1.8855403661727905,
+                  1.8855403661727905,
+                  1.8855403661727905,
+                  -0.5858926773071289,
+                  -0.5858926773071289,
+                  -0.5858926773071289,
+                  -0.84865403175354,
+                  -0.27127790451049805,
+                  -0.42347148060798645,
+                  -0.016000306233763695,
+                  -0.0631776973605156,
+                  -0.0631776973605156,
+                  -0.0631776973605156,
+                  -0.0631776973605156,
+                  -0.003941442351788282,
+                  -0.007124198768990499
+                ],
+                [
+                  -0.39105987548828125,
+                  -1.0308502912521362,
+                  1.946419358253479,
+                  -0.2709561586380005,
+                  -0.6706920862197876,
+                  -0.32135385274887085,
+                  -0.2709561586380005,
+                  -0.550150454044342,
+                  2.5920891761779785,
+                  -0.550150454044342,
+                  -0.550150454044342,
+                  -0.550150454044342,
+                  -0.550150454044342,
+                  -0.550150454044342,
+                  3.2490651607513428,
+                  3.2490651607513428,
+                  3.2490651607513428,
+                  0.6853784322738647,
+                  -0.13909940421581268,
+                  -0.3853417634963989,
+                  -0.019391776993870735,
+                  -0.14295360445976257,
+                  -0.14295360445976257,
+                  -0.14295360445976257,
+                  -0.14295360445976257,
+                  -0.013119617477059364,
+                  -0.36401747171297344
+                ],
+                [
+                  -0.7342522740364075,
+                  -0.9863951206207275,
+                  -3.617642879486084,
+                  -0.7017135620117188,
+                  -0.9694682359695435,
+                  5.620602130889893,
+                  -0.7017135620117188,
+                  -0.19135212898254395,
+                  -2.856102228164673,
+                  -0.19135212898254395,
+                  -0.19135212898254395,
+                  -0.19135212898254395,
+                  -0.19135212898254395,
+                  -0.19135212898254395,
+                  -2.6039602756500244,
+                  -2.6039602756500244,
+                  -2.6039602756500244,
+                  6.57445764541626,
+                  -0.6526502966880798,
+                  -1.43942391872406,
+                  -0.10221296548843384,
+                  -0.014127874746918678,
+                  -0.014127874746918678,
+                  -0.014127874746918678,
+                  -0.014127874746918678,
+                  -0.6511535048484802,
+                  2.0905887888517745
+                ],
+                [
+                  -4.290370941162109,
+                  -4.290370941162109,
+                  -5.039012908935547,
+                  -0.01925024203956127,
+                  13.112996101379395,
+                  -0.08375591784715652,
+                  -0.01925024203956127,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.04687977954745293,
+                  5.627749919891357,
+                  -3.386188507080078,
+                  -7.84276008605957,
+                  -0.7445265650749207,
+                  -0.7445265650749207,
+                  -0.7445265650749207,
+                  -0.7445265650749207,
+                  -0.3988998234272003,
+                  -1.7480714340265964
+                ],
+                [
+                  -0.7475456595420837,
+                  -0.7475456595420837,
+                  -1.6507619619369507,
+                  -0.16614879667758942,
+                  3.382016658782959,
+                  -0.37202927470207214,
+                  -0.16614879667758942,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  -0.20171964168548584,
+                  -5.1520490646362305,
+                  1.304565668106079,
+                  9.132158279418945,
+                  -0.8959161639213562,
+                  -0.8959161639213562,
+                  -0.8959161639213562,
+                  -0.8959161639213562,
+                  -1.7722704410552979,
+                  0.4662747139198583
+                ],
+                [
+                  5.2614054679870605,
+                  4.892021656036377,
+                  4.124888896942139,
+                  -3.9596896171569824,
+                  0.03200284391641617,
+                  -4.370650291442871,
+                  -3.9596896171569824,
+                  -0.36937645077705383,
+                  -0.4108622968196869,
+                  -0.36937645077705383,
+                  -0.36937645077705383,
+                  -0.36937645077705383,
+                  -0.36937645077705383,
+                  -0.36937645077705383,
+                  -0.021492311730980873,
+                  -0.021492311730980873,
+                  -0.021492311730980873,
+                  -0.021492311730980873,
+                  1.6581127643585205,
+                  0.3329879343509674,
+                  -0.2890937328338623,
+                  -0.7019303441047668,
+                  -0.7019303441047668,
+                  -0.7019303441047668,
+                  -0.7019303441047668,
+                  -0.2632267475128174,
+                  -2.018812923025559
+                ],
+                [
+                  -0.8196571469306946,
+                  -0.9427523016929626,
+                  1.737303614616394,
+                  -0.3038083016872406,
+                  0.646655261516571,
+                  -0.6782469153404236,
+                  -0.3038083016872406,
+                  -0.08566789329051971,
+                  -0.3239986300468445,
+                  -0.08566789329051971,
+                  -0.08566789329051971,
+                  -0.08566789329051971,
+                  -0.08566789329051971,
+                  -0.08566789329051971,
+                  -0.20180128514766693,
+                  -0.20180128514766693,
+                  -0.20180128514766693,
+                  -0.20491288602352142,
+                  -1.294231653213501,
+                  0.33666539192199707,
+                  -0.8426955938339233,
+                  2.9355804920196533,
+                  2.9355804920196533,
+                  2.9355804920196533,
+                  2.9355804920196533,
+                  -0.39617735147476196,
+                  -0.17723192844141814
+                ],
+                [
+                  -1.0487102270126343,
+                  -1.0885326862335205,
+                  -1.1939481496810913,
+                  -0.02273440547287464,
+                  -13.764267921447754,
+                  -0.7516464591026306,
+                  -0.02273440547287464,
+                  -0.02981494925916195,
+                  -0.07142386585474014,
+                  -0.02981494925916195,
+                  -0.02981494925916195,
+                  -0.02981494925916195,
+                  -0.02981494925916195,
+                  -0.02981494925916195,
+                  -0.030219970270991325,
+                  -0.030219970270991325,
+                  -0.030219970270991325,
+                  -0.6679853200912476,
+                  8.9619722366333,
+                  3.602407932281494,
+                  -0.2980998754501343,
+                  -0.0435507670044899,
+                  -0.0435507670044899,
+                  -0.0435507670044899,
+                  -0.0435507670044899,
+                  -4.969768524169922,
+                  1.426006190366039
+                ],
+                [
+                  -0.1825793981552124,
+                  -0.24324864149093628,
+                  -0.6661633253097534,
+                  -0.025691278278827667,
+                  -2.8704376220703125,
+                  -0.6940401792526245,
+                  -0.025691278278827667,
+                  -0.039159197360277176,
+                  -0.10310956090688705,
+                  -0.039159197360277176,
+                  -0.039159197360277176,
+                  -0.039159197360277176,
+                  -0.039159197360277176,
+                  -0.039159197360277176,
+                  -0.04753309488296509,
+                  -0.04753309488296509,
+                  -0.04753309488296509,
+                  -0.5880683660507202,
+                  -4.522441387176514,
+                  3.2469794750213623,
+                  -1.6559323072433472,
+                  -0.3261188566684723,
+                  -0.3261188566684723,
+                  -0.3261188566684723,
+                  -0.3261188566684723,
+                  9.761443138122559,
+                  1.276429180043156
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "how do I request a laptop service?"
+      ],
+      [
+        "en",
+        "what should I do if my laptop is not working?"
+      ],
+      [
+        "en",
+        "who should I contact for laptop repairs?"
+      ],
+      [
+        "en",
+        "laptop repair"
+      ],
+      [
+        "en",
+        "schedule a meeting"
+      ],
+      [
+        "en",
+        "book a meeting"
+      ],
+      [
+        "en",
+        "how do I schedule a meeting?"
+      ],
+      [
+        "en",
+        "I need to set up a meeting"
+      ],
+      [
+        "en",
+        "meeting schedule"
+      ],
+      [
+        "en",
+        "meeting arrangement"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {}
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
