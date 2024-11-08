@@ -1,0 +1,163 @@
+doctype html
+html(lang="en")
+  head
+    title Chatbot
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      #chat-container {
+        max-width: 600px;
+        margin: 0 auto;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background: white;
+        padding: 20px;
+      }
+      #messages {
+        border: 1px solid #ccc;
+        padding: 10px;
+        height: 400px;
+        overflow-y: scroll;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .message {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        max-width: 75%;
+        clear: both;
+      }
+      .user-message {
+        background-color: #d1ffd1;
+        float: right;
+        text-align: right;
+      }
+      .bot-message {
+        background-color: #e0e0e0;
+        float: left;
+        text-align: left;
+      }
+      button {
+        margin: 5px 0;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 5px 10px;
+      }
+      #sendButton{
+        width: 100px;
+        height: 38px;
+        margin-left: 10px;
+      }
+      #userMessage {
+        width: 450px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      input[type="text"] {
+        width: calc(100% - 22px);
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .suggestion-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      .suggestion-button:hover {
+        background-color: #0056b3;
+      }
+  body
+    h1(style='margin-left: 47%;') Chatbot
+    div#chat-container
+      div#messages
+      div#suggestions
+      input#userMessage(type="text" placeholder="Type your message here")
+      button(id="sendButton" onclick="sendMessage()") Send
+
+    script.
+      // Store responseId for follow-up queries
+      let currentResponseId = null;
+
+      // Function to initialize the chat with a greeting and suggestions
+      function initChat() {
+        const messagesDiv = $('#messages');
+        messagesDiv.append('<div class="message bot-message"><strong>Bot:</strong> Hi! How can I assist you today?</div>');
+        showSuggestions(['Schedule Meeting', 'Laptop Service']);
+      }
+
+      function showSuggestions(suggestions) {
+        const suggestionsDiv = $('#suggestions');
+        suggestionsDiv.empty();
+        suggestions.forEach(suggestion => {
+          const button = $('<button class="suggestion-button"></button>')
+            .text(suggestion)
+            .on('click', () => sendSuggestion(suggestion));
+          suggestionsDiv.append(button);
+        });
+      }
+
+      // Function to send a user message
+      function sendMessage() {
+        const userMessage = $('#userMessage').val();
+        if (userMessage.trim()) {
+          const messagesDiv = $('#messages');
+          messagesDiv.append(`<div class="message user-message"><strong>You:</strong> ${userMessage}</div>`);
+          $('#userMessage').val('');
+
+          $.ajax({
+            url: '/chat',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ message: userMessage, responseId: currentResponseId }), // Pass current responseId if available
+            success: function(data) {
+              messagesDiv.append(`<div class="message bot-message"><strong>Bot:</strong> ${data.reply}</div>`);
+              messagesDiv.scrollTop(messagesDiv.prop('scrollHeight')); 
+              data.suggestions.length>0 ? showSuggestions(data.suggestions) : showSuggestions(['Schedule Meeting', 'Laptop Service']); 
+              // Update responseId for follow-up
+              currentResponseId = null;
+            }
+          });
+        }
+      }
+
+      // Function to send suggestion when a button is clicked
+      function sendSuggestion(suggestion) {
+        const messagesDiv = $('#messages');
+        messagesDiv.append(`<div class="message user-message"><strong>You:</strong> ${suggestion}</div>`);
+
+        $.ajax({
+          url: '/chat', 
+          method: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ message: suggestion, responseId: currentResponseId }), // Pass current responseId if available
+          success: function(data) {
+            messagesDiv.append(`<div class="message bot-message"><strong>Bot:</strong> ${data.reply}</div>`); // Display bot response
+            messagesDiv.scrollTop(messagesDiv.prop('scrollHeight')); 
+            data.suggestions.length>0 ? showSuggestions(data.suggestions) : showSuggestions(['Schedule Meeting', 'Laptop Service']);
+
+            // Update responseId for follow-up
+            currentResponseId = data.responseId || null;
+          }
+        });
+      }
+
+      // Initialize the chat on page load
+      $(document).ready(initChat);
+
