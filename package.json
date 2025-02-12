@@ -24,4 +24,7 @@
     "synonyms": "^1.0.1",
     "wordnet": "^2.0.0"
   }
+  "scripts": {
+    "build": "echo 'No build step needed'"
+  }
 }
